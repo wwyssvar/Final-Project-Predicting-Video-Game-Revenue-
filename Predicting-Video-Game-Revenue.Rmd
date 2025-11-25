@@ -1,21 +1,22 @@
 ---
-
-title: "Final Project: Predicting Video Game Revenue"
+title: "CDS 101 – Final Project Report"
 author: "Werner Wyss - Kanita Haque - Hussein Hamdan"
-date: "`r Sys.Date()`"
-documentclass: article
-geometry: margin=1in
-fontsize: 11pt
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output:
+  html_document:
+    css: "gmu-cds101.css"
+    toc: true
+    toc_depth: 3
+    number_sections: true
   pdf_document:
-    toc: false
-    df_print: kable
-    fig_caption: false
-    number_sections: false
-    dev: pdf
-    highlight: tango
-    
+    toc: true
 ---
+
+
+
+
+
+
 
 
 
