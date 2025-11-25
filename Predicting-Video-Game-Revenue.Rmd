@@ -14,6 +14,19 @@ output:
 
 # 1. Problem Definition
 
+The main question of this project is: Which factors help predict the revenue of a video game? Using the Gaming Industry Trends dataset, we investigate how platform, genre, release year, and other features relate to a game’s financial performance.
+
+This question is interesting because the gaming industry continues to grow, and understanding the features associated with higher revenue can help studios, marketers, and developers make informed decisions. Predictive insights can also help identify which types of games tend to perform well in the market.
+
+The objective of this analysis is to build linear models that use game characteristics to estimate revenue and to identify which variables are most strongly associated with higher or lower revenue. Our goal is not to perfectly predict sales but to understand which factors contribute meaningfully to revenue patterns in the dataset.
+
+Key assumptions include:
+
+* The dataset is accurate and represents industry trends fairly.
+
+* Revenue is influenced by the variables included (platform, genre, release year, etc.).
+
+* Linear modeling is appropriate for exploring these relationships.
 
 
 # 2. Data Acquisition & Description
