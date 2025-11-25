@@ -1,9 +1,21 @@
 ---
-title: "Predicting-Video-Game-Revenue"
-Names: 
-output: html_document
----
 
+title: "Final Project: Predicting Video Game Revenue"
+author: "Werner Wyss - Kanita Haque - Hussein Hamdan"
+date: "`r Sys.Date()`"
+documentclass: article
+geometry: margin=1in
+fontsize: 11pt
+output:
+  pdf_document:
+    toc: false
+    df_print: kable
+    fig_caption: false
+    number_sections: false
+    dev: pdf
+    highlight: tango
+    
+---
 
 
 
