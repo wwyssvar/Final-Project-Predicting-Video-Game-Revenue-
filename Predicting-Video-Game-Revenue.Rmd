@@ -31,7 +31,9 @@ Key assumptions include:
 
 # 2. Data Acquisition & Description
 
+The dataset is called Gaming Industry Trends and the source for the dataset is Kaggle. We obtained the dataset through the download link on the Kaggle website. The main features would include game title, genre, platform, release year, and revenue, along with possible additional fields describing popularity or rating. The approximate number of rows and columns would be 1000 rows and 11 columns. Some biases to take into consideration would be sampling bias. The dataset would subject to sampling bias due to the limited amount of data given (only 1000 rows). This constraint can exclude large portions of the gaming industry, particularly small studios, niche genres, and emerging platforms. 
 
+As a result, the observed trends may reflect more mainstream titles.
 
 # 3. Data Cleaning & Preprocessing
 
