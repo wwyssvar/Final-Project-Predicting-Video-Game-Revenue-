@@ -37,6 +37,49 @@ As a result, the observed trends may reflect more mainstream titles.
 
 # 3. Data Cleaning & Preprocessing
 
+```{r}
+
+# Read in the raw CSV
+gaming_raw <- read.csv("gaming_industry_trends.csv")
+
+# Rename messy columns to cleaner names 
+gaming_raw <- gaming_raw %>%
+  rename(
+    Game_Title              = Game.Title,
+    Release_Year            = Release.Year,
+    Revenue_Millions        = Revenue..Millions...,
+    Players_Millions        = Players..Millions.,
+    Peak_Concurrent_Players = Peak.Concurrent.Players,
+    Metacritic_Score        = Metacritic.Score,
+    Esports_Popularity      = Esports.Popularity,
+    Trending_Status         = Trending.Status
+  )
+
+# Drop rows with missing key values
+gaming_clean <- gaming_raw |>
+  filter(
+    !is.na(Revenue_Millions),
+    !is.na(Genre),
+    !is.na(Platform),
+    !is.na(Release_Year)
+  ) |>
+# Remove clearly invalid numeric values
+  filter(
+    Revenue_Millions > 0,
+    Players_Millions >= 0,
+    Metacritic_Score >= 0,
+    Metacritic_Score <= 100
+  ) |>
+# Convert variables to appropriate types
+  mutate(
+    Genre              = as.factor(Genre),
+    Platform           = as.factor(Platform),
+    Esports_Popularity = as.factor(Esports_Popularity),
+    Trending_Status    = as.factor(Trending_Status),
+    Release_Year       = as.integer(Release_Year)
+  )
+
+```
 
 
 # 4. Exploratory Data Analysis (EDA)
