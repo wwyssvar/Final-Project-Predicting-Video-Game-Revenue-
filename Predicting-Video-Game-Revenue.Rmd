@@ -42,7 +42,7 @@ As a result, the observed trends may reflect more mainstream titles.
 # Read in the raw CSV
 gaming_raw <- read.csv("gaming_industry_trends.csv")
 
-# Rename messy columns to cleaner names 
+# Rename messy column names with periods to cleaner names with dashes
 gaming_raw <- gaming_raw %>%
   rename(
     Game_Title              = Game.Title,
@@ -55,7 +55,7 @@ gaming_raw <- gaming_raw %>%
     Trending_Status         = Trending.Status
   )
 
-# Drop rows with missing key values
+# Drop any possible rows with missing key values
 gaming_clean <- gaming_raw |>
   filter(
     !is.na(Revenue_Millions),
@@ -63,7 +63,7 @@ gaming_clean <- gaming_raw |>
     !is.na(Platform),
     !is.na(Release_Year)
   ) |>
-# Remove clearly invalid numeric values
+# Remove any possible invalid numeric values
   filter(
     Revenue_Millions > 0,
     Players_Millions >= 0,
