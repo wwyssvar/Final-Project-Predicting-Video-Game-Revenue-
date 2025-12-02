@@ -37,7 +37,9 @@ As a result, the observed trends may reflect more mainstream titles.
 
 # 3. Data Cleaning & Preprocessing
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
+
+library(dplyr)
 
 # Read in the raw CSV
 gaming_raw <- read.csv("gaming_industry_trends.csv")
@@ -90,7 +92,6 @@ summary(gaming_clean)
 
 ```{r}
 
-library(dplyr)
 library(ggplot2)
 
 summary(gaming_clean[, c("Revenue_Millions",
