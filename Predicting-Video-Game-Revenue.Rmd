@@ -56,33 +56,109 @@ gaming_raw <- gaming_raw %>%
   )
 
 # Drop any possible rows with missing key values
-gaming_clean <- gaming_raw |>
+gaming_clean <- gaming_raw %>%
   filter(
     !is.na(Revenue_Millions),
     !is.na(Genre),
     !is.na(Platform),
     !is.na(Release_Year)
-  ) |>
+  ) %>%
 # Remove any possible invalid numeric values
-  filter(
+ filter(
     Revenue_Millions > 0,
     Players_Millions >= 0,
+    Peak_Concurrent_Players >= 0,
     Metacritic_Score >= 0,
     Metacritic_Score <= 100
-  ) |>
+  ) %>%
 # Convert variables to appropriate types
-  mutate(
-    Genre              = as.factor(Genre),
-    Platform           = as.factor(Platform),
-    Esports_Popularity = as.factor(Esports_Popularity),
-    Trending_Status    = as.factor(Trending_Status),
-    Release_Year       = as.integer(Release_Year)
+ mutate(
+    Genre                        = as.factor(Genre),
+    Platform                     = as.factor(Platform),
+    Esports_Popularity           = as.factor(Esports_Popularity),
+    Trending_Status              = as.factor(Trending_Status),
+    Release_Year                 = as.integer(Release_Year)
   )
+
+# Final check of the cleaned dataset
+summary(gaming_clean)
 
 ```
 
 
 # 4. Exploratory Data Analysis (EDA)
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+
+summary(gaming_clean[, c("Revenue_Millions",
+                         "Players_Millions",
+                         "Peak_Concurrent_Players",
+                         "Metacritic_Score",
+                         "Release_Year")]
+        )
+
+# Frequency tables for main categorical variables
+table(gaming_clean$Platform)
+table(gaming_clean$Genre)
+
+```
+
+```{r}
+
+# Histogram of game revenue (in millions)
+ggplot(gaming_clean, aes(x = Revenue_Millions)) +
+  geom_histogram(binwidth = 200, color = "black", fill = "white") +
+  labs(
+    title = "Distribution of Video Game Revenue (Millions)",
+    x = "Revenue (Millions of Dollars)",
+    y = "Number of Games"
+  )
+
+```
+
+```{r}
+
+# Boxplot of revenue by platform (in millions)
+ggplot(gaming_clean, aes(x = Platform, y = Revenue_Millions)) +
+  geom_boxplot() +
+  labs(
+    title = "Video Game Revenue by Platform",
+    x = "Platform",
+    y = "Revenue (Millions of Dollars)"
+  )
+
+```
+
+```{r}
+
+# Scatterplot of revenue vs. release year (in millions)
+ggplot(gaming_clean, aes(x = Release_Year, y = Revenue_Millions)) +
+  geom_point(alpha = 0.3, size = 1) +
+  geom_smooth(se = FALSE, color = "blue") +
+  labs(
+    title = "Video Game Revenue vs. Release Year",
+    x = "Release Year",
+    y = "Revenue (Millions of Dollars)"
+  )
+
+```
+
+```{r}
+
+# Scatterplot of revenue vs. players (both in millions)
+ggplot(gaming_clean, aes(x = Players_Millions, y = Revenue_Millions)) +
+  geom_point(alpha = 0.3, size = 1) +
+  geom_smooth(se = FALSE, color = "blue") +
+  labs(
+    title = "Revenue vs. Number of Players (Millions)",
+    x = "Players (Millions)",
+    y = "Revenue (Millions of Dollars)"
+  )
+
+```
 
 
 
