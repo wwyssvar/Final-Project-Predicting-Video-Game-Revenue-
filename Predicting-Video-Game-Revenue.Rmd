@@ -3,13 +3,13 @@ title: "CDS 101 – Final Project Report"
 author: "Werner Wyss - Kanita Haque - Hussein Hamdan"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output:
+  pdf_document:
+    toc: true
   html_document:
     css: "gmu-cds101.css"
     toc: true
     toc_depth: 3
     number_sections: true
-  pdf_document:
-    toc: true
 ---
 
 # 1. Problem Definition
@@ -36,6 +36,10 @@ The dataset is called Gaming Industry Trends and the source for the dataset is K
 As a result, the observed trends may reflect more mainstream titles.
 
 # 3. Data Cleaning & Preprocessing
+  The analysis required us to perform data cleaning operations which verified the accuracy and usability of all information in the dataset. The first step involved changing multiple column names because their original names included periods which made them hard to understand. The new names improved the dataset's readability.
+  The analysis required us to eliminate all entries containing missing essential data points including revenue and genre and platform and release year. The games require these essential variables to perform analysis. The analysis excluded all entries containing invalid data points because real-world data requires positive values for players and revenue.
+  The process involved transforming multiple columns into their appropriate data formats. The analysis required us to convert Genre and Platform into factor variables because they represent categories and Release_Year into an integer data type.
+  The dataset became ready for advanced analysis after we finished all necessary cleaning operations which ensured data consistency and accuracy. The cleaning process protects our analysis from future errors which results in better reliability for our visualizations and models.
 
 ```{r, message=FALSE, warning=FALSE}
 
@@ -119,6 +123,9 @@ ggplot(gaming_clean, aes(x = Revenue_Millions)) +
   )
 
 ```
+Histogram: Distribution of Video Game Revenue
+
+The histogram presentation demonstrates how video game revenue distributes across the complete dataset. The majority of games generate revenue between 1,000 million dollars and 4,000 million dollars. The revenue of most games stays within this range but two games generate either very low or extremely high revenue. The data indicates that video games generate either substantial financial success or average revenue levels.
 
 ```{r}
 
@@ -132,6 +139,9 @@ ggplot(gaming_clean, aes(x = Platform, y = Revenue_Millions)) +
   )
 
 ```
+Boxplot: Video Game Revenue by Platform
+
+The boxplot presentation enables users to evaluate revenue performance between different gaming platforms. The revenue distribution for each platform appears as a box in the graph. The median revenue value appears as a line inside each box while the box height indicates the extent of revenue variation. The platforms demonstrate different revenue levels and revenue distribution patterns. The analysis reveals which gaming platforms generate higher total revenue.
 
 ```{r}
 
@@ -146,6 +156,9 @@ ggplot(gaming_clean, aes(x = Release_Year, y = Revenue_Millions)) +
   )
 
 ```
+Scatterplot: Revenue vs. Release Year
+
+The scatterplot displays the relationship between game release dates and their corresponding revenue values. The scatterplot contains game data points which follow a blue trend line. The blue trend line maintains a flat position which indicates no existing connection between release year and revenue. The release year of a game does not create a direct link to its revenue generation. The revenue values of games span across all release years without any specific pattern.
 
 ```{r}
 
@@ -160,6 +173,9 @@ ggplot(gaming_clean, aes(x = Players_Millions, y = Revenue_Millions)) +
   )
 
 ```
+Scatterplot: Revenue vs. Number of Players
+
+The scatterplot examines how revenue levels change when player numbers increase. The plot shows a wide distribution of points which contradicts the expected relationship between player numbers and revenue. The blue trend line maintains a flat position which indicates no existing relationship between player numbers and revenue. The data shows that games with large player bases can generate low revenue while games with smaller player bases can achieve higher revenue. The analysis indicates that player numbers do not effectively predict revenue levels in this particular dataset.
 
 
 
