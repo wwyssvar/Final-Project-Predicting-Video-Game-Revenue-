@@ -91,7 +91,6 @@ summary(gaming_clean)
 
 ```
 
-
 # 4. Exploratory Data Analysis (EDA)
 
 ```{r}
@@ -177,11 +176,17 @@ Scatterplot: Revenue vs. Number of Players
 
 The scatterplot examines how revenue levels change when player numbers increase. The plot shows a wide distribution of points which contradicts the expected relationship between player numbers and revenue. The blue trend line maintains a flat position which indicates no existing relationship between player numbers and revenue. The data shows that games with large player bases can generate low revenue while games with smaller player bases can achieve higher revenue. The analysis indicates that player numbers do not effectively predict revenue levels in this particular dataset.
 
-
-
 # 5. Visualization Quality and Storytelling
 
+The visualizations selected for this analysis were chosen to match the structure of the data and the research question.
 
+A histogram was used to examine the distribution of video game revenue, which is a continuous variable. This plot revealed that most games cluster between one and four billion dollars in revenue, with a few extreme outliers. The histogram was appropriate because it highlights skewness and spread, allowing us to assess whether mean or median values better represent the data.
+
+A boxplot was employed to compare revenue across platforms, a categorical variable. Boxplots are well suited for this purpose because they display medians, variability, and outliers within each group. The visualization showed that platforms differ in both central tendency and spread. This could suggest that platform choice may influence revenue, which directly connects to our research question.
+
+Two scatterplots were used to test relationships between continuous predictors and revenue. The first examined released year showed a flat trend line and no clear correlation, which can indicate that newer games do not necessarily earn more. The second scatterplot revealed that large player counts do not guarantee high revenue. Scatterplots were appropriate here because they allowed us to test for linear or nonlinear associations between continuous variables.
+
+All plots include clear axis labels with units (e.g. "Revenue (Millions of Dollars)"), descriptive titles and legends where necessary. The colors were kept simple, and transparency (alpha) was applied to scatterplots to reduce overplotting and improve readability. Bin widths in the histogram were chosen to balance detail with clarity, and categorical labels in the boxplot were spelled out fully to ensure accessibility and interpretability. 
 
 # 6. Modeling Approach
 
