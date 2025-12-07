@@ -210,7 +210,8 @@ Our primary modeling approach was multiple linear regression. This model was sel
 
 # 10. References
 
-
+* CDS 101. Assignment 10: Car Prices. 2025, GMU.
+* CDS 102. California Housing Lab. 2025, GMU.
 
 # Appendix (Optional)
 
