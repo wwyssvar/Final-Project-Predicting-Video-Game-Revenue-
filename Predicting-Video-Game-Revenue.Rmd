@@ -91,7 +91,6 @@ summary(gaming_clean)
 
 ```
 
-
 # 4. Exploratory Data Analysis (EDA)
 
 ```{r}
@@ -177,15 +176,25 @@ Scatterplot: Revenue vs. Number of Players
 
 The scatterplot examines how revenue levels change when player numbers increase. The plot shows a wide distribution of points which contradicts the expected relationship between player numbers and revenue. The blue trend line maintains a flat position which indicates no existing relationship between player numbers and revenue. The data shows that games with large player bases can generate low revenue while games with smaller player bases can achieve higher revenue. The analysis indicates that player numbers do not effectively predict revenue levels in this particular dataset.
 
-
-
 # 5. Visualization Quality and Storytelling
 
+The visualizations selected for this analysis were chosen to match the structure of the data and the research question.
 
+A histogram was used to examine the distribution of video game revenue, which is a continuous variable. This plot revealed that most games cluster between one and four billion dollars in revenue, with a few extreme outliers. The histogram was appropriate because it highlights skewness and spread, allowing us to assess whether mean or median values better represent the data.
+
+A boxplot was employed to compare revenue across platforms, a categorical variable. Boxplots are well suited for this purpose because they display medians, variability, and outliers within each group. The visualization showed that platforms differ in both central tendency and spread. This could suggest that platform choice may influence revenue, which directly connects to our research question.
+
+Two scatterplots were used to test relationships between continuous predictors and revenue. The first examined released year showed a flat trend line and no clear correlation, which can indicate that newer games do not necessarily earn more. The second scatterplot revealed that large player counts do not guarantee high revenue. Scatterplots were appropriate here because they allowed us to test for linear or nonlinear associations between continuous variables.
+
+All plots include clear axis labels with units (e.g. "Revenue (Millions of Dollars)"), descriptive titles and legends where necessary. The colors were kept simple, and transparency (alpha) was applied to scatterplots to reduce overplotting and improve readability. Bin widths in the histogram were chosen to balance detail with clarity, and categorical labels in the boxplot were spelled out fully to ensure accessibility and interpretability. 
 
 # 6. Modeling Approach
 
+The problem was framed as a regression task since the target variable, video game revenue, is continuous and measured in millions of dollars. Our objective was not to classify games into categories but to estimate revenue levels based on game characteristics such as platform, genre, release year, players (millions), and critical scores.
 
+We did not implement a heuristic or rule-based model. Instead, our analysis focused directly on regression methods. The choice of regression was appropriate because it allows us to quantify the relationship between multiple predictors and a continuous outcome, while providing interpretable coefficients that indicate the direction and strength of each association. 
+
+Our primary modeling approach was multiple linear regression. This model was selected because it can incorporate both categorical predictors (platform, genre, etc) and continuous predictors (players, release year, etc). Encoding categorical variables as factors enabled us to evaluate differences across groups, while continuous variables allowed us to test linear relationships. It was pretty efficient for a dataset that had the size of ours (1000 rows) and offers transparency in interpretation, making it well suited for identifying which factors contribute most strongly to video game revenue.
 
 # 7. Model Implementation & Evaluation
 
@@ -201,7 +210,8 @@ The scatterplot examines how revenue levels change when player numbers increase.
 
 # 10. References
 
-
+* CDS 101. Assignment 10: Car Prices. 2025, GMU.
+* CDS 102. California Housing Lab. 2025, GMU.
 
 # Appendix (Optional)
 
