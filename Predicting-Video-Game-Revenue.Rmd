@@ -198,6 +198,27 @@ Our primary modeling approach was multiple linear regression. This model was sel
 
 # 7. Model Implementation & Evaluation
 
+```{r}
+
+set.seed(123)
+
+n <- nrow(gaming_clean)
+train_index <- sample(seq_len(n), size = 0.8 * n)
+
+train_data <- gaming_clean[train_index, ]
+test_data  <- gaming_clean[-train_index, ]
+
+game_model <- lm(Revenue_Millions ~ Platform + Genre + Release_Year,
+                 data = train_data)
+
+pred_test <- predict(game_model, newdata = test_data)
+
+rmse <- sqrt(mean((test_data$Revenue_Millions - pred_test)^2))
+
+summary(game_model)
+rmse
+
+```
 
 
 # 8. Conclusions & Recommendations
