@@ -3,13 +3,13 @@ title: "CDS 101 – Final Project Report"
 author: "Werner Wyss - Kanita Haque - Hussein Hamdan"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output:
-  pdf_document:
-    toc: true
   html_document:
     css: "gmu-cds101.css"
     toc: true
     toc_depth: 3
     number_sections: true
+  pdf_document:
+    toc: true
 ---
 
 # 1. Problem Definition
@@ -204,11 +204,51 @@ Our primary modeling approach was multiple linear regression. This model was sel
 
 # 7. Model Implementation & Evaluation
 
+```{r}
 
+set.seed(123)
+
+n <- nrow(gaming_clean)
+train_index <- sample(seq_len(n), size = 0.8 * n)
+
+train_data <- gaming_clean[train_index, ]
+test_data  <- gaming_clean[-train_index, ]
+
+game_model <- lm(Revenue_Millions ~ Platform + Genre + Release_Year,
+                 data = train_data)
+
+pred_test <- predict(game_model, newdata = test_data)
+
+rmse <- sqrt(mean((test_data$Revenue_Millions - pred_test)^2))
+
+summary(game_model)
+rmse
+
+```
 
 # 8. Conclusions & Recommendations
 
+Our analysis set out to answer the question: Which factors help predict the revenue of a video game? Using the Gaming Industry Trends dataset, we examined platform, genre, release year, player counts, and critical scores to see how these factors to the financial performances of games.
 
+In this dataset, genre shows the clearest differences in revenue, while platform, release year, and player counts do not reliably predict financial success. Critical scores and esports popularity have some influence but are not decisive factors.
+
+Key Findings:
+
+* Platform: Revenue distributions across platforms were broadly similar.
+* Genre: Action, Sports, and Shooter titles tended to cluster at higher revenue levels, while Simulation, Strategy, and Horror games were more often associated with lower averages.
+* Release and Number of Players did not guarantee high revenue. The trend line was flat.
+* Critical Scores and Esports Popularity had weak to moderate corelations.
+
+Limitations:
+
+* The size of the dataset and the bias towards mainstream provide a narrow angle of the industry. It emphasizes mainstream titles and excludes many indie games, niche games, and emerging platforms.
+* There are a lot of key variables missing such as marketing budgets, distribution channels, micro transaction sales, etc. Without these, our models can't capture some of the most important financial influences in the gaming industry.
+* Linear regression assumes linear relationships, which may oversimplify complex industry dynamics.
+
+Future Work:
+
+* We could collect a larger and more diverse sample that includes indie titles, niche genres, and emerging platforms. This woud reduce sampling bias and improve generalizability. 
+* We could explore more interaction effects. Revenue often depends on a combination of factors. Genre alone may not matter, but Genre + Platform might. For instance, Shooters on PC may perform a lot more differently than Shooters on Mobile.
 
 # 9. Code Quality & Reproducibility
 
