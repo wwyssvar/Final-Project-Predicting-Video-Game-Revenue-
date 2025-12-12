@@ -263,8 +263,4 @@ The R Markdown file execution sequence produces identical results for dataset cl
 
 * CDS 101. Assignment 10: Car Prices. 2025, GMU.
 * CDS 102. California Housing Lab. 2025, GMU.
-
-# Appendix (Optional)
-
-
-
+* https://www.kaggle.com/datasets/haseebindata/gaming-industry-trends-1000-rows
