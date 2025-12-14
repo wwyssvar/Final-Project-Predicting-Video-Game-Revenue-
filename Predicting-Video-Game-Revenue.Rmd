@@ -148,13 +148,18 @@ The boxplot presentation enables users to evaluate revenue performance between d
 
 ```{r}
 
-# Scatterplot of revenue vs. release year (in millions)
-ggplot(gaming_clean, aes(x = Release_Year, y = Revenue_Millions)) +
-  geom_point(alpha = 0.3, size = 1) +
-  geom_smooth(se = FALSE, color = "blue") +
+# Boxplot of revenue vs. release year
+gaming_clean$Year_Group <- cut(
+  gaming_clean$Release_Year,
+  breaks = seq(2000, 2025, by = 5),
+  include.lowest = TRUE
+)
+
+ggplot(gaming_clean, aes(x = Year_Group, y = Revenue_Millions)) +
+  geom_boxplot() +
   labs(
-    title = "Video Game Revenue vs. Release Year",
-    x = "Release Year",
+    title = "Video Game Revenue by Release Year Group",
+    x = "Release Year Group",
     y = "Revenue (Millions of Dollars)"
   )
 
@@ -166,12 +171,11 @@ The scatterplot displays the relationship between game release dates and their c
 
 ```{r}
 
-# Scatterplot of revenue vs. players (both in millions)
-ggplot(gaming_clean, aes(x = Players_Millions, y = Revenue_Millions)) +
-  geom_point(alpha = 0.3, size = 1) +
-  geom_smooth(se = FALSE, color = "blue") +
+# Boxplot of revenue by number of players
+ggplot(gaming_clean, aes(x = factor(Players_Millions), y = Revenue_Millions)) +
+  geom_boxplot() +
   labs(
-    title = "Revenue vs. Number of Players (Millions)",
+    title = "Revenue by Number of Players",
     x = "Players (Millions)",
     y = "Revenue (Millions of Dollars)"
   )
