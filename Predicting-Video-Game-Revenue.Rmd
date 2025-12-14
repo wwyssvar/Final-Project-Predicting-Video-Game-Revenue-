@@ -165,21 +165,19 @@ ggplot(gaming_clean, aes(x = Year_Group, y = Revenue_Millions)) +
 
 ```
 
-Scatterplot: Revenue vs. Release Year
+Boxplot: Revenue vs. Release Year
 
-The scatterplot displays the relationship between game release dates and their corresponding revenue values. The scatterplot contains game data points which follow a blue trend line. The blue trend line maintains a flat position which indicates no existing connection between release year and revenue. The release year of a game does not create a direct link to its revenue generation. The revenue values of games span across all release years without any specific pattern.
+The boxplot presents the distribution of video game revenue across grouped release years. Each box reflects the spread of revenue values within a five year interval, highlighting the median and variability of earnings. The height and range of the boxes vary, indicating inconsistent revenue patterns over time. No clear progression or decline is observed across across the year groups, suggesting that the release period does not directly influence a game's financial success. Revenue values are widely scattered within each group, showing that high and low earnings occur in all time frames without a predictable trend.
 
 ```{r}
-
-# Boxplot of revenue by number of players
-ggplot(gaming_clean, aes(x = factor(Players_Millions), y = Revenue_Millions)) +
-  geom_boxplot() +
+# Scatterplot of revenue by number of players (in millions)
+ggplot(gaming_clean, aes(x = Players_Millions, y = Revenue_Millions)) +
+  geom_point(alpha = 0.5) +
   labs(
-    title = "Revenue by Number of Players",
+    title = "Video Game Revenue by Number of Players",
     x = "Players (Millions)",
     y = "Revenue (Millions of Dollars)"
   )
-
 ```
 
 Scatterplot: Revenue vs. Number of Players
@@ -192,9 +190,9 @@ The visualizations selected for this analysis were chosen to match the structure
 
 A histogram was used to examine the distribution of video game revenue, which is a continuous variable. This plot revealed that most games cluster between one and four billion dollars in revenue, with a few extreme outliers. The histogram was appropriate because it highlights skewness and spread, allowing us to assess whether mean or median values better represent the data.
 
-A boxplot was employed to compare revenue across platforms, a categorical variable. Boxplots are well suited for this purpose because they display medians, variability, and outliers within each group. The visualization showed that platforms differ in both central tendency and spread. This could suggest that platform choice may influence revenue, which directly connects to our research question.
+Boxplots were employed to compare revenue across categorical variables such as platform and release year group. Boxplots are well suited for this purpose because they display medians, variability, and outliers within each category. The visualization of platforms showed that distributions differ in both central tendency and spread, suggesting that platform choice may influence revenue. The release year boxplot revealed wide variability across all intervals, with no consistent upward or downward trend, indicating that timing alone does not guarantee financial success.
 
-Two scatterplots were used to test relationships between continuous predictors and revenue. The first examined released year showed a flat trend line and no clear correlation, which can indicate that newer games do not necessarily earn more. The second scatterplot revealed that large player counts do not guarantee high revenue. Scatterplots were appropriate here because they allowed us to test for linear or nonlinear associations between continuous variables.
+Scatterplots were used to test relationships between continuous predictors and revenue. The first examined number of players and revealed that large player counts do not guarantee high revenue, as the flat trend line suggested no clear correlation. Scatterplots were appropriate here because they allowed us to test for linear or nonlinear associations between continuous variables.
 
 All plots include clear axis labels with units (e.g. "Revenue (Millions of Dollars)"), descriptive titles and legends where necessary. The colors were kept simple, and transparency (alpha) was applied to scatterplots to reduce overplotting and improve readability. Bin widths in the histogram were chosen to balance detail with clarity, and categorical labels in the boxplot were spelled out fully to ensure accessibility and interpretability. 
 
@@ -240,8 +238,9 @@ Key Findings:
 
 * Platform: Revenue distributions across platforms were broadly similar.
 * Genre: Action, Sports, and Shooter titles tended to cluster at higher revenue levels, while Simulation, Strategy, and Horror games were more often associated with lower averages.
-* Release and Number of Players did not guarantee high revenue. The trend line was flat.
-* Critical Scores and Esports Popularity had weak to moderate corelations.
+* Number of Players did not guarantee high revenue. The trend line was flat.
+* Release Year showed wide variability in revenue across all release year groups. No consistent upward or downward trend was observed, indicating that release timing alone did not guarantee high revenue.
+* Critical Scores and Esports Popularity had weak to moderate correlations.
 
 Limitations:
 
