@@ -1,6 +1,6 @@
 ---
 title: "CDS 101 – Final Project Report"
-author: "Werner Wyss - Kanita Haque - Hussein Hamdan"
+author: "Kanita Haque - Hussein Hamdan - Werner Wyss"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 output:
   pdf_document:
